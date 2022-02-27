@@ -2,7 +2,7 @@ import { Item } from './Item';
 import { ItemComparator } from './ItemComparator';
 
 export class Inventory implements ItemComparator {
-  items: Array[Item] = [];
+  items: Array[Item];
 
   inventory() {}
 
