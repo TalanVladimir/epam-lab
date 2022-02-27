@@ -1,0 +1,24 @@
+{
+  "name": "working",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "hw1": "nodemon HomeWork/1_jsScopeHoistingClosures.js",
+    "hw2": "nodemon HomeWork/2_jsFunctionsContextThis.js",
+    "hw3": "nodemon HomeWork/3_jsClassesConstructorNew.js",
+    "hw4": "nodemon HomeWork/4_jsPrototypesInheritance.js",
+    "hw5": "nodemon HomeWork/5_jsAsyncJavascript.js",
+    "hw7": "nodemon HomeWork/7_jsHandlingErrors,Debuging.js",
+    "hw8": "nodemon HomeWork/8_TypescriptFeatures.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "nodemon": "^2.0.15"
+  },
+  "devDependencies": {
+    "ts-node": "^10.4.0"
+  }
+}

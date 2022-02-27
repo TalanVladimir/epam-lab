@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dom Events</title>
+    <style>
+      body {
+        background: #919191;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .item {
+        background: rgb(85, 255, 80);
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #000000;
+        position: absolute;
+      }
+
+      .item.selected {
+        background: #ffd000;
+      }
+
+      [draggable] {
+        cursor: move;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="target"></div>
+  </body>
+  <script>
+    const elem = text => {
+      const element = document.createElement('div');
+      element.className = 'item';
+      element.setAttribute('draggable', 'true');
+
+      if (`${text}`.length === 1) {
+        const marginTop = '5px';
+        const marginLeft = `${(text + 1) * 40 - 30}px`;
+
+        element.style.top = marginTop;
+        element.style.left = marginLeft;
+      } else {
+        const marginTop = parseFloat(`${text}`[0]) * 40 + 5 + 'px';
+        const marginLeft = `${(parseFloat(`${text}`[1]) + 1) * 40 - 30}px`;
+
+        element.style.top = marginTop;
+        element.style.left = marginLeft;
+      }
+
+      element.textContent = ++text;
+      element.zIndex = 1;
+      return element;
+    };
+
+    const target = document.querySelector('#target');
+    for (let i = 0; i < 100; ++i) {
+      const newElem = elem(i);
+      target.appendChild(newElem);
+    }
+
+    const onClick = e => {
+      const allItems = document.querySelectorAll('div');
+      allItems.forEach(element => {
+        element.classList.remove('selected');
+      });
+      e.target.classList.add('selected');
+    };
+
+    target.addEventListener('click', onClick, false);
+
+    let myX = '';
+    let myY = '';
+    let startX = 0;
+    let startY = 0;
+
+    let whichArt = '';
+
+    const moveStart = e => {
+      whichArt = e.target;
+      myX = e.offsetX === undefined ? e.layerX : e.offsetX;
+      myY = e.offsetY === undefined ? e.layerY : e.offsetY;
+
+      whichArt.style.zIndex = 10;
+    };
+
+    const moveDragOver = e => {
+      e.preventDefault();
+    };
+
+    const moveDragEnd = e => {
+      e.preventDefault();
+      const newX = e.pageX - myX;
+      const newY = e.pageY - myY;
+
+      whichArt.style.top = `${newY}px`;
+      whichArt.style.left = `${newX}px`;
+      whichArt.style.zIndex = 1;
+    };
+
+    target.addEventListener('dragstart', moveStart, false);
+    target.addEventListener('dragover', moveDragOver, false);
+    target.addEventListener('dragend', moveDragEnd, false);
+  </script>
+</html>
