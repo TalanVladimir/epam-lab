@@ -3,9 +3,9 @@ import { Item } from './Item';
 export class Weapon extends Item {
   MODIFIER_CHANGE_RATE: number = 0.05;
   baseDamage: number;
-  damageModifier: number;
+  damageModifier: number = 0;
   baseDurability: number;
-  durabilityModifier: number;
+  durabilityModifier: number = 0;
 
   constructor(
     name: string,
@@ -29,9 +29,11 @@ export class Weapon extends Item {
     return 'yeah';
   }
 
-  setName(string): void {}
+  setName(name: string): void {
+    this.name = name;
+  }
 
   getName(): string {
-    return 'name';
+    return this.name;
   }
 }

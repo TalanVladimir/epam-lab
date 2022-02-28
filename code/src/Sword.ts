@@ -7,6 +7,6 @@ export class Sword extends Weapon {
     value: number,
     weight: number,
   ) {
-    super(null, baseDamage, baseDurability, value, weight);
+    super('', baseDamage, baseDurability, value, weight);
   }
 }

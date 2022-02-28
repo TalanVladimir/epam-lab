@@ -1,7 +1,7 @@
 import { Item } from './Item';
 
 export class Consumable extends Item {
-  consumed: boolean;
+  consumed: boolean = false;
   spoiled: boolean;
 
   constructor(name: string, value: number, weight: number, spoiled: boolean) {

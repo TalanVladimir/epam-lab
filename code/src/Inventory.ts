@@ -2,7 +2,7 @@ import { Item } from './Item';
 import { ItemComparator } from './ItemComparator';
 
 export class Inventory implements ItemComparator {
-  items: Array[Item];
+  items: Item[] = [];
 
   inventory() {}
 
@@ -10,7 +10,7 @@ export class Inventory implements ItemComparator {
     this.items.push(item);
   }
 
-  sort(comparator: ItemComparator): void {}
+  sort(comparator: ItemComparator = new ItemComparator()): void {}
 
   toString(): string {
     return '';
