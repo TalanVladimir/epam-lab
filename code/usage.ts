@@ -1,8 +1,8 @@
-import { ItemWeightComparator } from './code/src/ItemWeightComparator';
-import { Inventory } from './code/src/Inventory';
-import { Item } from './code/src/Item';
-import { Sword } from './code/src/Sword';
-import { Pizza } from './code/src/Pizza';
+import { ItemWeightComparator } from './src/ItemWeightComparator';
+import { Inventory } from './src/Inventory';
+import { Item } from './src/Item';
+import { Sword } from './src/Sword';
+import { Pizza } from './src/Pizza';
 
 const inventory: Inventory = new Inventory();
 
