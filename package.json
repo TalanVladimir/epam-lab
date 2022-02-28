@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./code/usage.ts",
+    "start": "nodemon ./code/usage",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

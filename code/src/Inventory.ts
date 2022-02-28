@@ -13,7 +13,7 @@ export class Inventory implements ItemComparator {
   sort(comparator: ItemComparator = new ItemComparator()): void {}
 
   toString(): string {
-    return '';
+    return 'inventory to string :)';
   }
 
   compare(first: Item, second: Item): number {
