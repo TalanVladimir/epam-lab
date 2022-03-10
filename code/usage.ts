@@ -24,15 +24,15 @@ console.log(inventory.toString());
 // Sort by natural order
 inventory.sort();
 
-// // Display the new inventory
+// Display the new inventory
 console.log(inventory.toString());
 
-// // Sort by weight
+// Sort by weight
 inventory.sort(new ItemWeightComparator());
 
-// // Display the inventory again
+// Display the inventory again
 console.log(inventory.toString());
 
-// // Use the sword
+// Use the sword
 console.log(a.use());
 console.log(a.use());
