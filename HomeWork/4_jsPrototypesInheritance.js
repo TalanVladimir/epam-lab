@@ -10,9 +10,10 @@ Person.prototype.introduce = function () {
 };
 
 function myNew(prototype, ...args) {
-  Object.setPrototypeOf(this, prototype.prototype);
-  this.constructor.apply(this, args);
-  return this;
+  const obj = {};
+  Object.setPrototypeOf(obj, prototype.prototype);
+  obj.constructor.apply(obj, args);
+  return obj;
 }
 
 var john = myNew(Person, 'John', 30); //- should	work	the	same	as: var	john	=		new	Person('John',	30);
