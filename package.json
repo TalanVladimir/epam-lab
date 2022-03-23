@@ -1,0 +1,27 @@
+{
+  "name": "epam_lab",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./code/usage",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TalanVladimir/epam_lab.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TalanVladimir/epam_lab/issues"
+  },
+  "homepage": "https://github.com/TalanVladimir/epam_lab#readme",
+  "devDependencies": {
+    "@types/node": "^17.0.14",
+    "nodemon": "^2.0.15",
+    "ts-node": "^10.4.0",
+    "tslib": "^2.3.1",
+    "typescript": "^4.5.5"
+  }
+}
