@@ -7,6 +7,8 @@ export class Bow extends Weapon {
     value: number,
     weight: number,
   ) {
-    super('', baseDamage, baseDurability, value, weight);
+    super('Bow', baseDamage, baseDurability, value, weight);
   }
+
+  polish(): void {}
 }
