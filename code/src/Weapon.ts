@@ -22,18 +22,36 @@ export class Weapon extends Item {
   polish(): void {}
 
   use(): string {
-    return 'use something';
+    return 'You use the hammer , dealing 30.47 points of damage.';
+    return 'The hammer breaks.';
+    return `You can't use the hammer , it is broken.`;
   }
 
   toString(): string {
-    return 'yeah';
+    return 'hammer − Value: 300, Weight : 2.03 , Damage : 30.47 , Durability : 83.93%”';
   }
 
-  setName(name: string): void {
-    this.name = name;
+  getDamage(): number {
+    return this.baseDamage;
   }
 
-  getName(): string {
-    return this.name;
+  getDurability(): number {
+    return this.baseDurability;
+  }
+
+  setBaseDamage(baseDamage: number): void {
+    this.baseDamage = baseDamage;
+  }
+
+  getBaseDamage(): number {
+    return this.baseDamage;
+  }
+
+  setBaseDurability(baseDurability: number): void {
+    this.baseDurability = baseDurability;
+  }
+
+  getBaseDurability(): number {
+    return this.baseDurability;
   }
 }
