@@ -4,7 +4,7 @@ import { ItemComparator } from './ItemComparator';
 export class Inventory implements ItemComparator {
   items: Item[] = [];
 
-  inventory() {}
+  constructor() {}
 
   addItem(item: Item): void {
     this.items.push(item);
