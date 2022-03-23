@@ -33,11 +33,21 @@ export class Book extends Item {
         return `Book: ${this.title} by ${this.author} with number of pages: ${this.pages}`;
     }
 
-    [Symbol.iterator]() {
-        return this;
-    }
+    [Symbol.iterator] = function () {
+        var keys: any = null;
+        var index = 0;
 
-    next() {
-        return { value: this.title };
-    }
+        return {
+            next: function () {
+                if (keys === null) {
+                    keys = Object.keys(this).sort();
+                }
+
+                return {
+                    value: keys[index],
+                    done: index++ >= keys.length,
+                };
+            },
+        };
+    };
 }
