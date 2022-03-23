@@ -1,15 +1,15 @@
 export class Page {
     pageNumber: number;
-    pageType: string;
     pageMaterial: string;
+    pageType: string;
 
-    constructor(pageNumber: number, pageType: string, pageMaterial: string) {
+    constructor(pageNumber: number, pageMaterial: string, pageType: string) {
         this.pageNumber = pageNumber;
-        this.pageType = pageType;
         this.pageMaterial = pageMaterial;
+        this.pageType = pageType;
     }
 
     toString(): string {
-        return `here is page ${this.pageType} #${this.pageNumber} and it's material is ${this.pageMaterial}`;
+        return `here is page ${this.pageMaterial} #${this.pageNumber} and it's material is ${this.pageType}`;
     }
 }
