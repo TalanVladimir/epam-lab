@@ -4,7 +4,7 @@ export class Pizza extends Consumable {
   numberOfSlices: number;
   slicesEaten: number = 0;
   constructor(numberOfSlices: number, spoiled: boolean) {
-    super('', 0, 0, spoiled);
+    super('Pizza', 0, 0, spoiled);
     this.numberOfSlices = numberOfSlices;
   }
 
