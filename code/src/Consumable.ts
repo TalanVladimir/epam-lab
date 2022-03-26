@@ -1,6 +1,6 @@
 import { Item } from './Item';
 
-export class Consumable extends Item {
+export abstract class Consumable extends Item {
   consumed: boolean = false;
   spoiled: boolean;
 
@@ -10,7 +10,10 @@ export class Consumable extends Item {
   }
 
   eat(): string {
-    return 'eat';
+    if (this.spoiled && this.consumed) {
+      return this.use();
+    }
+    return '';
   }
 
   use(): string {

@@ -10,5 +10,9 @@ export class Sword extends Weapon {
     super('Sword', baseDamage, baseDurability, value, weight);
   }
 
-  polish(): void {}
+  polish(): void {
+    let newDamage = this.getBaseDamage() + this.MODIFIER_CHANGE_RATE;
+    if (this.getBaseDamage() > 125) newDamage = 125;
+    this.setBaseDamage(newDamage);
+  }
 }

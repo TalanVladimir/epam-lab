@@ -10,5 +10,9 @@ export class Bow extends Weapon {
     super('Bow', baseDamage, baseDurability, value, weight);
   }
 
-  polish(): void {}
+  polish(): void {
+    let newDurability = this.getBaseDurability() + this.MODIFIER_CHANGE_RATE;
+    if (newDurability > 1) newDurability = 1;
+    this.setBaseDurability(newDurability);
+  }
 }

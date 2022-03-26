@@ -3,7 +3,8 @@ import { ItemComparator } from './ItemComparator';
 
 export class ItemWeightComparator implements ItemComparator {
   public compare(first: Item, second: Item): number {
-    return 1;
-    // your code goes here
+    if (first.weight > second.weight) return 1;
+    else if (first.weight < second.weight) return -1;
+    else return 0;
   }
 }

@@ -1,6 +1,6 @@
 import { Comparable } from './Comparable';
 
-let id = 0;
+let currentId = 0;
 
 export abstract class Item implements Comparable<Item> {
   id: number;
@@ -9,18 +9,26 @@ export abstract class Item implements Comparable<Item> {
   weight: number;
 
   constructor(name: string, value: number, weight: number) {
-    this.id = id;
+    this.id = currentId;
     this.name = name;
     this.value = value;
     this.weight = weight;
 
-    ++id;
+    ++currentId;
   }
 
   public use(): void {}
 
   public compareTo(other: Item): number {
-    return 0;
+    if (this.value < other.value) return -1;
+    else if (this.value > other.value) return 1;
+    else {
+      const currentValue = this.name.toLowerCase();
+      const otherValue = other.name.toLowerCase();
+      if (currentValue < otherValue) return -1;
+      else if (currentValue > otherValue) return 1;
+      else return 0;
+    }
   }
 
   public toString(item: Item): string {
@@ -55,5 +63,7 @@ export abstract class Item implements Comparable<Item> {
     this.weight = weight;
   }
 
-  static reset(): void {}
+  static reset(): void {
+    currentId = 0;
+  }
 }

@@ -9,6 +9,16 @@ export class Pizza extends Consumable {
   }
 
   eat(): string {
-    return 'eat';
+    if (this.slicesEaten < this.numberOfSlices) {
+      this.slicesEaten++;
+
+      if (this.slicesEaten >= this.numberOfSlices) {
+        this.consumed = true;
+      }
+      if (this.spoiled) return `You eat the ${this.name}.`;
+      else return `You eat the ${this.name}. \nYou feel sick.`;
+    } else {
+      return `There is nothing left of the ${this.name} to consume.`;
+    }
   }
 }
