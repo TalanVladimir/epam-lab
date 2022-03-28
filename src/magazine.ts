@@ -22,4 +22,15 @@ export class Magazine extends Item {
     toString() {
         return `Magazine: ${this.title} with number of pages: ${this.pages}`;
     }
+
+    [Symbol.iterator]() {
+        let step = 0;
+        const iterator = {
+            next() {
+                step++;
+                return { value: step, done: true };
+            },
+        };
+        return iterator;
+    }
 }

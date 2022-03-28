@@ -18,4 +18,15 @@ export class Comics extends Item {
     toString(): string {
         return `Comics: ${this.title} by ${this.author}, the artist is ${this.artist}, number of pages: ${this.pages}`;
     }
+
+    [Symbol.iterator]() {
+        let step = 0;
+        const iterator = {
+            next() {
+                step++;
+                return { value: step, done: true };
+            },
+        };
+        return iterator;
+    }
 }
