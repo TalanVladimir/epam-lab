@@ -1,4 +1,4 @@
-import { iView } from './types';
+import { iCurrency, iView } from './types';
 
 export class View implements iView {
   app: Element | null;
@@ -14,7 +14,7 @@ export class View implements iView {
   labelI2: Element;
   group2: Element;
 
-  defElement: Element;
+  list: Element;
 
   constructor() {
     this.app = this.getElement('#root');
@@ -35,50 +35,30 @@ export class View implements iView {
     this.group2 = this.createElement('fieldset');
     this.group2.append(this.radioI1, this.labelI1, this.radioI2, this.labelI2);
 
-    this.defElement = this.createTransfer('dollar');
+    this.radioM1.setAttribute('checked', 'true');
+    this.radioI1.setAttribute('checked', 'true');
 
-    if (this.app !== null)
-      this.app.append(this.group1, this.group2, this.defElement);
+    this.list = this.createElement('div', 'list');
+
+    if (this.app !== null) this.app.append(this.group1, this.group2, this.list);
   }
 
-  createElement(tag: string, className?: string | null): Element {
-    const element = document.createElement(tag);
-    if (className) element.classList.add(className);
+  private addItem(item: iCurrency): Element {
+    item.toValue = item.fromValue * item.rate;
 
-    return element;
-  }
-
-  createRadio(id: string, name: string): Element {
-    const element = document.createElement('input');
-    element.id = id;
-    element.type = 'radio';
-    element.name = name;
-
-    return element;
-  }
-
-  createLabel(id: string, text: string): Element {
-    const element = document.createElement('label');
-    element.setAttribute('for', id);
-    element.textContent = text;
-
-    return element;
-  }
-
-  createTransfer(currency: string): Element {
-    const titleLeft = this.createLabel('', 'Dollar');
-    const titleInput = this.createElement('input');
-    const titleRight = this.createLabel('', 'Dollar');
+    const titleLeft = this.createLabel('', `1 ${item.from} is`);
+    const titleInput = this.createInput(item.rate);
+    const titleRight = this.createLabel('', item.to);
     const titleDiv = this.createElement('div', 'write');
     titleDiv.append(titleLeft, titleInput, titleRight);
 
-    const leftLabel = this.createLabel('left', 'Euro');
-    const leftInput = this.createElement('input');
+    const leftLabel = this.createLabel('left', item.from);
+    const leftInput = this.createInput(item.fromValue);
     const leftDiv = this.createElement('div', 'left');
     leftDiv.append(leftLabel, leftInput);
 
-    const rightLabel = this.createLabel('left', 'Euro');
-    const rightInput = this.createElement('input');
+    const rightLabel = this.createLabel('left', item.to);
+    const rightInput = this.createInput(item.toValue);
     const rightDiv = this.createElement('div', 'right');
     rightDiv.append(rightLabel, rightInput);
 
@@ -88,6 +68,45 @@ export class View implements iView {
     const table = this.createElement('div', 'table');
     table.append(titleDiv, middleDiv);
     return table;
+  }
+
+  updateItems(items: iCurrency[]): void {
+    this.list.textContent = '';
+
+    items.forEach(item => {
+      this.list.append(this.addItem(item));
+    });
+  }
+
+  private createInput(value: number): Element {
+    const element = document.createElement('input');
+    element.value = value.toString();
+
+    return element;
+  }
+
+  private createElement(tag: string, className?: string | null): Element {
+    const element = document.createElement(tag);
+    if (className) element.classList.add(className);
+
+    return element;
+  }
+
+  private createRadio(id: string, name: string): Element {
+    const element = document.createElement('input');
+    element.id = id;
+    element.type = 'radio';
+    element.name = name;
+
+    return element;
+  }
+
+  private createLabel(id: string, text: string): Element {
+    const element = document.createElement('label');
+    element.setAttribute('for', id);
+    element.textContent = text;
+
+    return element;
   }
 
   getElement(selector: string): Element | null {
