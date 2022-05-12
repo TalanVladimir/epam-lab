@@ -1,0 +1,105 @@
+<html>
+  <head>
+    <title>Solid Principles</title>
+  </head>
+  <style>
+    .divTable {
+      display: flex;
+    }
+
+    .divColumn {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .divRow {
+      margin-right: -1px;
+      margin-top: -1px;
+      padding: 15px;
+      border: 2px solid black;
+    }
+  </style>
+  <body>
+    <h1>1. Identify SOLID Principles</h1>
+    Choose a large open source project written in TypeScript preferably (choose
+    another OOP language if you want: Java, C#, Ruby). <br />You may want to
+    look at GitHub. A project may be considered large enough if it contains at
+    least 30 classes. <br />Try to identify at least 3 or more (preferably)
+    examples of the SOLID principles. <br />Document them by filling in the
+    table below. Note that you don't need to give code examples itself, just
+    provide the link<br />
+    to file with line numbers range (or whatever you want to clearly recognize
+    the example you describe, <br />e.g. file hello.ts:15-36, class Foo), you
+    can also write free text. <br />Principle Examples Single Responsibility
+    Principle Open / Closed Principle Liskov Substitution <br />Principle
+    Interface Seggregation Principle Dependency Inversion Principle<br /><br />
+    <div class="divTable">
+      <div class="divColumn">
+        <div class="divRow">Single Responsibility Principle</div>
+        <div class="divRow">Open / Closed Principle</div>
+        <div class="divRow">Liskov Substitution Principle</div>
+        <div class="divRow">Interface Seggregation Principle</div>
+        <div class="divRow">Dependency Inversion Principle</div>
+      </div>
+      <div class="divColumn">
+        <a
+          href="https://github.com/microsoft/vscode/blob/main/src/vs/editor/standalone/browser/standaloneLanguages.ts"
+          class="divRow"
+          >Row 349</a
+        >
+        <a
+          href="https://github.com/microsoft/vscode/blob/main/src/vs/base/common/actions.ts"
+          class="divRow"
+          >Row 51</a
+        >
+        <a
+          href="https://github.com/microsoft/vscode/blob/main/src/vs/base/common/actions.ts"
+          class="divRow"
+          >Row 51</a
+        >
+        <a
+          href="https://github.com/microsoft/vscode/blob/main/src/vs/editor/common/model.ts"
+          class="divRow"
+          target="_blank"
+          >Row 59, 69</a
+        >
+        <a class="divRow">link</a>
+      </div>
+    </div>
+    <h1>2. Violations of SOLID and Other Principles</h1>
+    Try to find at least 3 or more (preferably) violations of the SOLID
+    principles in the project you have chosen for Problem 1 and document it.<br />
+    Additionally, you can describe other (DRY / KISS / YAGNI / etc.) violations.
+    You may provide short descriptions about how to refactor/improve such
+    violations. <br />Optionally, you can add small examples with results of
+    such refactoring using pseudo-code or real code.<br /><br />
+    <div class="divTable">
+      <div class="divColumn">
+        <div class="divRow">Single Responsibility Principle</div>
+        <div class="divRow">Open / Closed Principle</div>
+        <div class="divRow">Liskov Substitution Principle</div>
+        <div class="divRow">Interface Seggregation Principle</div>
+        <div class="divRow">Dependency Inversion Principle</div>
+      </div>
+      <div class="divColumn">
+        <div class="divRow">example 1</div>
+        <div class="divRow">example 2</div>
+        <a
+          href="https://github.com/microsoft/vscode/blob/main/src/vs/editor/common/services/languageService.ts"
+          class="divRow"
+          >Row 15 Extends, 39 overrides</a
+        >
+        <div class="divRow">example 4</div>
+        <div class="divRow">example 5</div>
+      </div>
+    </div>
+    <h1>Evaluation Criteria:</h1>
+    0 – Nothing was done <br />2 – Examples of the SOLID principles was provided
+    but contains less then 3 cases for each of them <br />3 – Examples of the
+    SOLID principles was fully done, there are no examples of violations <br />4
+    – Violations of the SOLID principles was provided as well, but each table
+    contains less then 3 examples. <br />5 – All principles covered with at
+    least 3 or more examples of SOLID cases and violations <br />5+ – Results of
+    refactoring and additional violations (DRY, KISS, YAGNI, etc.) was provided
+  </body>
+</html>
