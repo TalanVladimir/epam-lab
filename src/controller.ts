@@ -7,5 +7,7 @@ export class Controller implements iController {
   constructor(model: iModel, view: iView) {
     this.model = model;
     this.view = view;
+
+    this.view.updateItems(this.model.items);
   }
 }
