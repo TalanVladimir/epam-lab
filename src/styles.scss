@@ -1,3 +1,5 @@
+$border-style: 1px solid black;
+
 body,
 #root {
   display: flex;
@@ -11,7 +13,7 @@ body,
 
 fieldset {
   background: #e3e3e3;
-  border: 1px solid black;
+  border: $border-style;
   width: 250px;
   padding: 5px;
   margin-bottom: 5px;
@@ -25,7 +27,7 @@ fieldset {
 
 .table {
   background: #e3e3e3;
-  border: 1px solid black;
+  border: $border-style;
   width: 250px;
   padding: 5px;
   margin-bottom: 5px;
