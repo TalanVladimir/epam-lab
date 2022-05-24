@@ -32,7 +32,9 @@ class Client {
     this.gui = gui;
   }
 
-  onShip(shipment: Shipment) {}
+  onShip(shipment: Shipment) {
+    return new Shipment(this.gui.state);
+  }
 }
 
 class Shipment {
@@ -48,20 +50,20 @@ class Shipment {
 
   ship(state: State) {
     if (state.weight < 15) {
-      return this.Letter();
+      return new Letter();
     } else if (state.weight <= 160) {
-      return this.Package();
+      return new Package();
     } else {
-      return this.Oversize();
+      return new Oversize();
     }
   }
-
-  Letter() {}
-
-  Package() {}
-
-  Oversize() {}
 }
+
+class Letter {}
+
+class Package {}
+
+class Oversize {}
 
 class Shipper {
   state: State;
@@ -73,32 +75,35 @@ class Shipper {
 
   getCost(state: State) {
     if (state.fromZipCode.length > 0) {
-      const zipStart = parseFloat(state.fromZipCode.toString().substring(0, 1));
+      const zipStart = parseFloat(state.fromZipCode.substring(0, 1));
       if ([4, 5, 6].includes(zipStart)) {
-        this.PacificParcelShipper();
+        return new PacificParcelShipper(state);
       } else if ([7, 8, 9].includes(zipStart)) {
-        this.ChicagoSprintShipper();
+        return new ChicagoSprintShipper(state);
       } else {
-        this.AirEastShipper();
+        return new AirEastShipper(state);
       }
     }
   }
+}
 
-  AirEastShipper() {
-    console.log('Air East');
+class AirEastShipper extends Shipper {
+  super(state: State) {
+    this.super(state);
     this.price = 0.39;
-    return false;
   }
+}
 
-  PacificParcelShipper() {
-    console.log('Pacific Parcel');
+class PacificParcelShipper extends Shipper {
+  super(state: State) {
+    this.super(state);
     this.price = 0.51;
-    return false;
   }
+}
 
-  ChicagoSprintShipper() {
-    console.log('Chicago Sprint');
+class ChicagoSprintShipper extends Shipper {
+  super(state: State) {
+    this.super(state);
     this.price = 0.42;
-    return false;
   }
 }
